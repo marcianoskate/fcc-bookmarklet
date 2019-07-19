@@ -1,3 +1,4 @@
 javascript:(function(){
-    //your code here
+
+    alert('hello world');
 })();
