@@ -1,0 +1,23 @@
+# How to go around this exercise
+
+## First pass
+
+1. Find divs
+2. Select half of them
+3. Delete them (This is going to look wonky since the element is going to be removed form the dom)
+
+======
+
+## Second pass
+
+Make it a bit nicer
+
+3.a Set opacity to 0 and hide
+
+=======
+
+## Third pass
+
+Make them disappear with a particle effect
+
+3.b Do the particles (can be left as homework :D )
