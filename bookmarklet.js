@@ -3,14 +3,29 @@ javascript:(function(){
     var imageDataArray = [];
     var canvasCount = 35;
 
+    const css = `
+        .dust { position : absolute; }
+    `;
+
     function main() {
         alert('hello world');
         html2canvas(document.querySelector("img")).then(canvas => {
             canvas.id = 'helloWorld';
 
+            const styleElement = document.createElement('style');
+            styleElement.type = 'text/css';
+            styleElement.appendChild(document.createTextNode(css));
+            const head = document.head || document.getElementsByTagName('head')[0];
+            head.appendChild(styleElement);
+
+            var divContainer = document.createElement("div");
+            divContainer.id = 'canvasContainer';
+            divContainer.style.position = 'relative';
+            divContainer.append(canvas);
+
             /*Insert canvas in document*/
             var container = document.querySelector(".bkWMgd");
-            container.insertAdjacentElement("afterend", canvas);
+            container.insertAdjacentElement("afterend", divContainer);
 
             /*Get image on canvas*/
             var ctx = canvas.getContext("2d");
@@ -32,7 +47,7 @@ javascript:(function(){
             for (let i = 0; i < canvasCount; i++) {
                 let c = newCanvasFromImageData(imageDataArray[i], canvas.width, canvas.height);
                 c.classList.add("dust");
-                container.insertAdjacentElement("afterend", c);
+                divContainer.append(c);
             }
         });
     }
